@@ -1,5 +1,5 @@
 import React, { FC, KeyboardEvent, useState } from "react";
-import { FilterValueType } from "../App";
+import { FilterValuesType } from "../App";
 
 export type TaskType = {
   id: string;
@@ -11,7 +11,7 @@ type TodoListPropsType = {
   title: string;
   tasks: Array<TaskType>;
   removeTask: (taskId: string) => void;
-  changeFilter: (filter: FilterValueType) => void;
+  changeFilter: (filter: FilterValuesType) => void;
   addTask: (title: string) => void;
 };
 const TodoList: FC<TodoListPropsType> = (props) => {
@@ -43,7 +43,7 @@ const TodoList: FC<TodoListPropsType> = (props) => {
     }
   };
 
-  const handlerCreator = (filter: FilterValueType) => () =>
+  const handlerCreator = (filter: FilterValuesType) => () =>
     props.changeFilter(filter);
   return (
     <div>
