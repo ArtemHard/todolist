@@ -24,3 +24,23 @@
   opacity: 0.5;
 }
 
+.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.task {
+  font-weight: bold;
+}
+
+.btn-active {
+  color: white;
+  background-color: hotpink;
+  border: 2px solid hotpink;
+  border-radius: 3px;
+}
+
+.input-error {
+  border: 3px solid red;
+  outline: none;
+}

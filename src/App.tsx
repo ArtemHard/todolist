@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 // import { Todolist } from "./Todolist";
-// import { v1 } from "uuid";
+import { v1 } from "uuid";
+import TodoList from "./TodoList/TodoList";
 
-// export type FilterValuesType = "all" | "active" | "completed";
-/*
+export type FilterValuesType = "all" | "active" | "completed";
+
 function App() {
   let [tasks, setTasks] = useState([
     { id: v1(), title: "HTML&CSS", isDone: true },
@@ -29,38 +30,45 @@ function App() {
 
   let [filter, setFilter] = useState<FilterValuesType>("all");
 
-  let tasksForTodolist = tasks;
+  const filteredTasks = () => {
+    let tasksForTodolist = tasks;
 
-  if (filter === "active") {
-    tasksForTodolist = tasks.filter((t) => t.isDone === false);
-  }
-  if (filter === "completed") {
-    tasksForTodolist = tasks.filter((t) => t.isDone === true);
-  }
+    if (filter === "active") {
+      return (tasksForTodolist = tasks.filter((t) => !t.isDone));
+    }
+    if (filter === "completed") {
+      return (tasksForTodolist = tasks.filter((t) => t.isDone));
+    }
+    return tasksForTodolist;
+  };
 
   function changeFilter(value: FilterValuesType) {
     setFilter(value);
   }
 
+  const changeStatus = (taskId: string) => {
+    setTasks(
+      tasks.map((t) => (t.id === taskId ? { ...t, isDone: !t.isDone } : t))
+    );
+  };
+
   return (
     <div className='App'>
-      <Todolist
+      <TodoList
         title='What to learn'
-        tasks={tasksForTodolist}
+        tasks={filteredTasks()}
         removeTask={removeTask}
         changeFilter={changeFilter}
         addTask={addTask}
-      >
-        <div>
-          <div>Many intresting information</div>
-        </div>
-      </Todolist>
+        changeStatus={changeStatus}
+        filter={filter}
+      ></TodoList>
     </div>
   );
 }
 
 export default App;
-*/
+
 //-------------------------------------------------------------------------------------------------------
 /*
 export type FilterValuesType = "all" | "active" | "completed";
@@ -151,7 +159,7 @@ function App() {
 
 export default App;
 */
-
+/*
 type PropsType = {
   userId: number;
   id: number;
@@ -199,3 +207,4 @@ function App() {
 }
 
 export default App;
+*/
