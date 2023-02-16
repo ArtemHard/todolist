@@ -19,12 +19,12 @@ export const todolistsReducer = (
       if (todolist) {
         todolist.title = action.payload.title;
       }
-      return state;
+      return [...state];
     }
     case "CHANGE-FILTER": {
       const todolist = state.find((tl) => tl.id === action.payload.todolistId);
       if (todolist) todolist.filter = action.payload.value;
-      return state;
+      return [...state];
     }
     case "REMOVE-TODOLIST": {
       return state.filter((tl) => tl.id !== action.payload.id);
